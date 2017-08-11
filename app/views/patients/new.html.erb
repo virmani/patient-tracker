@@ -1,0 +1,41 @@
+<h1>New Patient</h1>
+
+<%= form_for :patient, url: patients_path do |f| %>
+    <p>
+        <%= f.label :last_name %> <%= f.text_field :last_name %>
+    </p>
+    <p>
+        <%= f.label :given_name %> <%= f.text_field :given_name %>
+    </p>
+    <p>
+        <%= f.label :date_of_birth %> <%= f.text_field :date_of_birth %>
+    </p>
+    <p>
+        <%= f.label :fathers_name %> <%= f.text_field :fathers_name %>
+    </p>
+    <p>
+        <%= f.label :fathers_occupation %> <%= f.text_field :fathers_occupation %>
+    </p>
+    <p>
+        <%= f.label :mothers_name %> <%= f.text_field :mothers_name %>
+    </p>
+    <p>
+        <%= f.label :mothers_occupation %> <%= f.text_field :mothers_occupation %>
+    </p>
+    <p>
+        <%= f.label :permanent_address %> <%= f.text_area :permanent_address %>
+    </p>
+    <p>
+        <%= f.label :permanent_district %> <%= f.text_field :permanent_district %>
+    </p>
+    <p>
+        <%= f.label :present_permanent_same %> <%= f.check_box :present_permanent_same %>
+    </p>
+    <p>
+        <%= f.label :present_address %> <%= f.text_area :present_address %>
+    </p>
+    
+    <p>
+        <%= f.submit %>
+    </p>
+<% end %>

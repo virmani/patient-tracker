@@ -1,0 +1,34 @@
+<h1>Patient</h1>
+
+    <p>
+        <strong>Name</strong>
+        <%= "#{@patient.given_name} #{@patient.last_name}" %>
+    </p>
+    <p>
+        <strong>DOB</strong>
+        <%= @patient.date_of_birth %>
+    </p>
+    <p>
+        <strong>Father</strong>
+        <%= "#{@patient.fathers_name}, #{@patient.fathers_occupation}" %>
+    </p>
+    <p>
+        <strong>Mother</strong>
+        <%= "#{@patient.mothers_name}, #{@patient.mothers_occupation}" %>
+    </p>
+    <p>
+        <strong>City/District</strong>
+        <%= @patient.permanent_district %>
+    </p>
+    <p>
+        <strong>Permanent Address</strong>
+        <%= @patient.permanent_address %>
+    </p>
+    <% if @patient.present_permanent_same %>
+        <p>Present address is same as permanent address</p>
+    <% else %>
+        <p>
+            <strong>Present Address</strong>
+            <%= @patient.present_address %>
+        </p>
+    <% end %>

@@ -1,0 +1,18 @@
+<h1>Listing patients</h1>
+
+<%= link_to 'New Patient', new_patient_path %>
+ 
+<table>
+  <tr>
+    <th>Name</th>
+    <th>City/District</th>
+  </tr>
+ 
+  <% @patients.each do |patient| %>
+    <tr>
+      <td><%= "#{patient.given_name} #{patient.last_name}" %></td>
+      <td><%= patient.permanent_district %></td>
+      <td><%= link_to 'Show', patient_path(patient) %></td>
+    </tr>
+  <% end %>
+</table>
