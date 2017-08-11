@@ -13,6 +13,7 @@
       <td><%= "#{patient.given_name} #{patient.last_name}" %></td>
       <td><%= patient.permanent_district %></td>
       <td><%= link_to 'Show', patient_path(patient) %></td>
+      <td><%= link_to 'Edit', edit_patient_path(patient) %></td>
     </tr>
   <% end %>
 </table>
