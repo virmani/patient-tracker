@@ -34,3 +34,10 @@
         </p>
     <% end %>
 
+    <h2>Add a phone number</h2>
+    <% if defined?(@phone)%>
+        <%= render 'phones/form', phone: @phone %>
+    <% else %>
+        <%= render 'phones/form' %>
+    <% end %>
+    

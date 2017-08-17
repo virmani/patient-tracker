@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number: MyString
+  type: 1
+  owner: 1
+  patient: one
+
+two:
+  number: MyString
+  type: 1
+  owner: 1
+  patient: two

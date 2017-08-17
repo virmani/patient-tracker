@@ -1,0 +1,30 @@
+
+<% if defined?(phone) %>
+    <% form_phone = phone %>
+<% else %>
+    <% form_phone = @patient.phones.build %>
+<% end %>
+
+<%= form_for([@patient, form_phone]) do |f| %>
+    <% if defined?(phone) && form_phone.errors.any? %>
+        <div id="error_explanation">
+        <h2>
+            <%= pluralize(form_phone.errors.count, "error") %> prohibited
+            this patient from being saved:
+        </h2>
+        <ul>
+            <% form_phone.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+        </ul>
+        </div>
+    <% end %>
+
+    <p>
+        <%= f.label :number %> <%= f.text_field :number %>
+        <%= f.label :phone_type %> <%= f.select :phone_type, Phone.phone_types.keys %>
+        <%= f.label :phone_owner %> <%= f.select :phone_owner, Phone.phone_owners.keys %>
+        <%= f.submit %> 
+    </p>
+
+<% end %>
