@@ -1,4 +1,9 @@
 class PhonesController < ApplicationController
+    def index
+        @patient = Patient.find(params[:patient_id])
+        redirect_to @patient
+    end
+
     def create
         @patient = Patient.find(params[:patient_id])
         @phone = @patient.phones.new(phone_params)

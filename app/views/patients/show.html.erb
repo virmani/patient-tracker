@@ -34,7 +34,12 @@
         </p>
     <% end %>
 
-    <h2>Add a phone number</h2>
+    <h2>Phone Numbers</h2>
+    <ul>
+        <%= render @patient.phones %>
+    </ul>
+
+    <h3>Add a new phone number</h3>
     <% if defined?(@phone)%>
         <%= render 'phones/form', phone: @phone %>
     <% else %>
