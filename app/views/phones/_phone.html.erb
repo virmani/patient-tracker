@@ -1,3 +1,4 @@
 <li>
-    <%= phone.number %> (<%= phone.phone_type.humanize %>) belonging to '<%= phone.phone_owner.humanize %>'
+    <%= phone.number %> (<%= phone.phone_type.humanize %>) belonging to '<%= phone.phone_owner.humanize %>' 
+    <%= link_to 'Delete', [phone.patient, phone], method: :delete, data: {confim: 'Are you sure?'}%>
 </li>

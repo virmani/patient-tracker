@@ -36,7 +36,7 @@
 
     <h2>Phone Numbers</h2>
     <ul>
-        <%= render @patient.phones %>
+        <%= render @patient.phones.select { |ph| !ph.new_record? } %>
     </ul>
 
     <h3>Add a new phone number</h3>

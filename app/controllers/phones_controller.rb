@@ -15,6 +15,14 @@ class PhonesController < ApplicationController
         end
     end
 
+    def destroy
+        @patient = Patient.find(params[:patient_id])
+        @phone = @patient.phones.find(params[:id])
+        @phone.destroy
+
+        redirect_to @patient
+    end
+
     private
     def phone_params
         params.require(:phone).permit(:number, :phone_type, :phone_owner)
