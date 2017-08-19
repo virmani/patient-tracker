@@ -1,4 +1,4 @@
-class PhonesController < ApplicationController
+class EmailsController < ApplicationController
     def index
         @patient = Patient.find(params[:patient_id])
         redirect_to @patient
@@ -6,9 +6,9 @@ class PhonesController < ApplicationController
 
     def create
         @patient = Patient.find(params[:patient_id])
-        @phone = @patient.phones.new(phone_params)
+        @email = @patient.emails.new(email_params)
 
-        if @phone.save
+        if @email.save
             redirect_to @patient
         else
             render 'patients/show'
@@ -17,14 +17,14 @@ class PhonesController < ApplicationController
 
     def destroy
         @patient = Patient.find(params[:patient_id])
-        @phone = @patient.phones.find(params[:id])
-        @phone.destroy
+        @email = @patient.emails.find(params[:id])
+        @email.destroy
 
         redirect_to @patient
     end
 
     private
-    def phone_params
-        params.require(:phone).permit(:number, :phone_type, :phone_owner)
+    def email_params
+        params.require(:email).permit(:email_address, :email_owner)
     end
 end

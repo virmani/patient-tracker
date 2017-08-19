@@ -1,0 +1,29 @@
+
+<% if defined?(email) %>
+    <% form_email = email %>
+<% else %>
+    <% form_email = @patient.emails.build %>
+<% end %>
+
+<%= form_for([@patient, form_email]) do |f| %>
+    <% if defined?(email) && form_email.errors.any? %>
+        <div id="error_explanation">
+        <h2>
+            <%= pluralize(form_email.errors.count, "error") %> prohibited
+            this patient from being saved:
+        </h2>
+        <ul>
+            <% form_email.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+        </ul>
+        </div>
+    <% end %>
+
+    <p>
+        <%= f.label :email_address %> <%= f.text_field :email_address %>
+        <%= f.label :email_owner %> <%= f.select :email_owner, Email.email_owners.keys %>
+        <%= f.submit %> 
+    </p>
+
+<% end %>

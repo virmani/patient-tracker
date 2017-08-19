@@ -46,3 +46,15 @@
         <%= render 'phones/form' %>
     <% end %>
     
+    <h2>Email Addresses</h2>
+    <ul>
+        <%= render @patient.emails.select { |em| !em.new_record? } %>
+    </ul>
+
+    <h3>Add a new email address</h3>
+    <% if defined?(@email)%>
+        <%= render 'emails/form', email: @email %>
+    <% else %>
+        <%= render 'emails/form' %>
+    <% end %>
+    

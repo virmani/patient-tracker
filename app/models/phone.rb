@@ -4,5 +4,5 @@ class Phone < ApplicationRecord
   validates :number, presence: true, length: {minimum: 9}
 
   enum phone_type: [:mobile, :landline]
-  enum phone_owner: [:mother, :father, :other]
+  enum phone_owner: [:self, :mother, :father, :other]
 end
