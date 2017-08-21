@@ -35,6 +35,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'validates_timeliness', '~> 4.0'
 
+gem 'phony_rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
