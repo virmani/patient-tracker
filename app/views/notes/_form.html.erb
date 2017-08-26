@@ -1,0 +1,28 @@
+
+
+<% if defined?(@note) %>
+    <% form_note = @note %>
+<% else %>
+    <% form_note = @patient.notes.new %>
+<% end %>
+<%= form_for([@patient, form_note]) do |f| %>
+    <% if form_note.errors.any? %>
+        <div id="error_explanation">
+        <h2>
+            <%= pluralize(form_note.errors.count, "error") %> prohibited
+            this patient from being saved:
+        </h2>
+        <ul>
+            <% form_note.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+        </ul>
+        </div>
+    <% end %>
+
+    <p>
+        <%= f.label :note %> <%= f.text_area :note %>
+        <%= f.submit %> 
+    </p>
+
+<% end %>

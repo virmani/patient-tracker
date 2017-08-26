@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   resources :patients do
     resources :phones
     resources :emails
+    resources :notes
   end
 end
