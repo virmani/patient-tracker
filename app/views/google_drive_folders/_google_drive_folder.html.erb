@@ -1,4 +1,2 @@
-<p>Linked with a google drive folder with id: <%= google_drive_folder.google_id %>
-    <%= link_to 'Unlink', [google_drive_folder.patient, google_drive_folder], method: :delete, data: {confim: 'Are you sure?'}%>
-</p>
-<iframe src= "https://drive.google.com/embeddedfolderview?id=<%= google_drive_folder.google_id %>#grid" style="width:50%; max-height:600px; border:0;"></iframe>
+<%= link_to 'Unlink ' + google_drive_folder.google_id, [google_drive_folder.patient, google_drive_folder], method: :delete, data: {confim: 'Are you sure?'}%>
+<iframe src= "https://drive.google.com/embeddedfolderview?id=<%= google_drive_folder.google_id %>#grid" style="width:100%; height:600px; border:0;"></iframe>
