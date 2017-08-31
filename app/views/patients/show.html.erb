@@ -1,69 +1,81 @@
 <h1>Patient</h1>
-    <%= link_to 'Edit', edit_patient_path(@patient) %>
+<%= link_to 'Edit', edit_patient_path(@patient) %>
 
+<p>
+    <strong>Name</strong>
+    <%= "#{@patient.given_name} #{@patient.last_name}" %>
+</p>
+<p>
+    <strong>DOB</strong>
+    <%= @patient.date_of_birth %>
+</p>
+<p>
+    <strong>Father</strong>
+    <%= "#{@patient.fathers_name}, #{@patient.fathers_occupation}" %>
+</p>
+<p>
+    <strong>Mother</strong>
+    <%= "#{@patient.mothers_name}, #{@patient.mothers_occupation}" %>
+</p>
+<p>
+    <strong>City/District</strong>
+    <%= @patient.permanent_district %>
+</p>
+<p>
+    <strong>Permanent Address</strong>
+    <%= @patient.permanent_address %>
+</p>
+<% if @patient.present_permanent_same %>
+    <p>Present address is same as permanent address</p>
+<% else %>
     <p>
-        <strong>Name</strong>
-        <%= "#{@patient.given_name} #{@patient.last_name}" %>
+        <strong>Present Address</strong>
+        <%= @patient.present_address %>
     </p>
-    <p>
-        <strong>DOB</strong>
-        <%= @patient.date_of_birth %>
-    </p>
-    <p>
-        <strong>Father</strong>
-        <%= "#{@patient.fathers_name}, #{@patient.fathers_occupation}" %>
-    </p>
-    <p>
-        <strong>Mother</strong>
-        <%= "#{@patient.mothers_name}, #{@patient.mothers_occupation}" %>
-    </p>
-    <p>
-        <strong>City/District</strong>
-        <%= @patient.permanent_district %>
-    </p>
-    <p>
-        <strong>Permanent Address</strong>
-        <%= @patient.permanent_address %>
-    </p>
-    <% if @patient.present_permanent_same %>
-        <p>Present address is same as permanent address</p>
+<% end %>
+
+<h2>Phone Numbers</h2>
+<ul>
+    <%= render @patient.phones.select { |ph| !ph.new_record? } %>
+</ul>
+
+<h3>Add a new phone number</h3>
+<% if defined?(@phone)%>
+    <%= render 'phones/form', phone: @phone %>
+<% else %>
+    <%= render 'phones/form' %>
+<% end %>
+
+<h2>Email Addresses</h2>
+<ul>
+    <%= render @patient.emails.select { |em| !em.new_record? } %>
+</ul>
+
+<h3>Add a new email address</h3>
+<% if defined?(@email)%>
+    <%= render 'emails/form', email: @email %>
+<% else %>
+    <%= render 'emails/form' %>
+<% end %>
+
+<h2>Google Drive Folder</h2>
+
+<% if @patient.google_drive_folder.present? %>
+    <%= render @patient.google_drive_folder %>
+<% else %>
+    <% if defined?(@gfolder)%>
+        <%= render 'google_drive_folders/form', gfolder: @gfolder %>
     <% else %>
-        <p>
-            <strong>Present Address</strong>
-            <%= @patient.present_address %>
-        </p>
+        <%= render 'google_drive_folders/form' %>
     <% end %>
-
-    <h2>Phone Numbers</h2>
-    <ul>
-        <%= render @patient.phones.select { |ph| !ph.new_record? } %>
-    </ul>
-
-    <h3>Add a new phone number</h3>
-    <% if defined?(@phone)%>
-        <%= render 'phones/form', phone: @phone %>
-    <% else %>
-        <%= render 'phones/form' %>
-    <% end %>
+<% end %>
     
-    <h2>Email Addresses</h2>
-    <ul>
-        <%= render @patient.emails.select { |em| !em.new_record? } %>
-    </ul>
-
-    <h3>Add a new email address</h3>
-    <% if defined?(@email)%>
-        <%= render 'emails/form', email: @email %>
-    <% else %>
-        <%= render 'emails/form' %>
+<h2>Notes</h2>
+<%= render 'notes/form' %>
+<% @patient.notes.select do |note| %>
+    <% if note.id != nil %>
+        <h4><%= note.created_at %></h4>
+        <p><%= note.note %></p>
+        <%= link_to "Edit", edit_patient_note_path(:patient_id => @patient.id, :id => note.id) %>
     <% end %>
-    
-    <h2>Notes</h2>
-    <%= render 'notes/form' %>
-    <% @patient.notes.select do |note| %>
-        <% if note.id != nil %>
-            <h4><%= note.created_at %></h4>
-            <p><%= note.note %></p>
-            <%= link_to "Edit", edit_patient_note_path(:patient_id => @patient.id, :id => note.id) %>
-        <% end %>
-    <% end %>
+<% end %>

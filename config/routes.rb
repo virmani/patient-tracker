@@ -4,5 +4,6 @@ Rails.application.routes.draw do
     resources :phones
     resources :emails
     resources :notes
+    resources :google_drive_folders
   end
 end

@@ -21,6 +21,14 @@ ActiveRecord::Schema.define(version: 20170822163053) do
     t.index ["patient_id"], name: "index_emails_on_patient_id"
   end
 
+  create_table "google_drive_folders", force: :cascade do |t|
+    t.string "google_id"
+    t.integer "patient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["patient_id"], name: "index_google_drive_folders_on_patient_id"
+  end
+
   create_table "notes", force: :cascade do |t|
     t.text "note"
     t.integer "patient_id"
