@@ -1,19 +1,19 @@
-<div class="row">
+<div class="row my-3">
     <div class=col-md-10>
         <span class="display-3">
             <%= "#{@patient.given_name} #{@patient.last_name}" %>
-        </span>
-
-            <%= link_to 'Edit', edit_patient_path(@patient), class: "btn" %>
-                <% if @patient.google_drive_folder.present? %>
-                    <%= render @patient.google_drive_folder %>
+            <small class="text-muted"><%= link_to 'Edit', edit_patient_path(@patient), class: "btn" %></small>
+            
+            <% if @patient.google_drive_folder.present? %>
+                <%= render @patient.google_drive_folder %>
+            <% else %>
+                <% if defined?(@gfolder)%>
+                    <%= render 'google_drive_folders/form', gfolder: @gfolder %>
                 <% else %>
-                    <% if defined?(@gfolder)%>
-                        <%= render 'google_drive_folders/form', gfolder: @gfolder %>
-                    <% else %>
-                        <%= render 'google_drive_folders/form' %>
-                    <% end %>
-                <% end %>            
+                    <%= render 'google_drive_folders/form' %>
+                <% end %>
+            <% end %>            
+        </span>
         
     </div>
     <div class="col-md-2">
@@ -60,31 +60,35 @@
 <div class="row my-3">
     <div class="col-md-4">
         <div class=my-3>
-            <h4 class="display-5">Phone Numbers <button type="button" class="btn btn-primary btn-sm ml-3">Add +</button></h4>
+            <span class="h4">Phone Numbers</span>
+            <button type="button" class="btn btn-primary btn-sm ml-3" data-toggle="modal" data-target="#addPhoneModal">
+                Add +
+            </button>
+
+            <% if defined?(@phone)%>
+                <%= render 'phones/form', phone: @phone %>
+            <% else %>
+                <%= render 'phones/form' %>
+            <% end %>
+
             <ul class="list-group">
                 <%= render @patient.phones.select { |ph| !ph.new_record? } %>
-                <li class="list-group-item add-phone">
-                    <span class="font-weight-bold">Add a new phone number</span>
-                    <% if defined?(@phone)%>
-                        <%= render 'phones/form', phone: @phone %>
-                    <% else %>
-                        <%= render 'phones/form' %>
-                    <% end %>            
-                </li>
             </ul>
         </div>
         <div class=my-3>
-            <h4 class="display-5">Email Addresses <button type="button" class="btn btn-primary btn-sm ml-3">Add +</button></h4>
+            <span class="h4">Email Addresses</span>
+            <button type="button" class="btn btn-primary btn-sm ml-3" data-toggle="modal" data-target="#addEmailModal">
+                Add +
+            </button>
+
+            <% if defined?(@emails)%>
+                <%= render 'emails/form', email: @email %>
+            <% else %>
+                <%= render 'emails/form' %>
+            <% end %>
+
             <ul class="list-group">
                 <%= render @patient.emails.select { |em| !em.new_record? } %>
-                <li class="list-group-item add-email">
-                    <span class="font-weight-bold">Add a new email address</span>
-                        <% if defined?(@email)%>
-                            <%= render 'emails/form', email: @email %>
-                        <% else %>
-                            <%= render 'emails/form' %>
-                        <% end %>
-                </li>
             </ul>
         </div>
     </div>

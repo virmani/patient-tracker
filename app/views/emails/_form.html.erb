@@ -5,25 +5,44 @@
     <% form_email = @patient.emails.build %>
 <% end %>
 
-<%= form_for([@patient, form_email]) do |f| %>
-    <% if defined?(email) && form_email.errors.any? %>
-        <div id="error_explanation">
-        <h2>
-            <%= pluralize(form_email.errors.count, "error") %> prohibited
-            this patient from being saved:
-        </h2>
-        <ul>
-            <% form_email.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-            <% end %>
-        </ul>
+<div class="modal fade" id="addEmailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Add a new Email</h4>
+            </div>
+            <div class="modal-body">
+                <%= form_for([@patient, form_email]) do |f| %>
+                    <% if defined?(email) && form_email.errors.any? %>
+                        <div id="error_explanation">
+                            <h2>
+                                <%= pluralize(form_email.errors.count, "error") %> prohibited
+                                this patient from being saved:
+                            </h2>
+                            <ul>
+                                <% form_email.errors.full_messages.each do |msg| %>
+                                <li><%= msg %></li>
+                                <% end %>
+                            </ul>
+                        </div>
+                        <script>
+                            $('#addEmailModal').modal('show');
+                        </script>
+                    <% end %>
+
+                    <p>
+                        <%= f.label :email_address %> <%= f.text_field :email_address %>
+                        <%= f.label :email_owner %> <%= f.select :email_owner, Email.email_owners.keys %>
+                        <%= f.submit %> 
+                    </p>
+
+                <% end %>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
         </div>
-    <% end %>
+    </div>
+</div>
 
-    <p>
-        <%= f.label :email_address %> <%= f.text_field :email_address %>
-        <%= f.label :email_owner %> <%= f.select :email_owner, Email.email_owners.keys %>
-        <%= f.submit %> 
-    </p>
-
-<% end %>
