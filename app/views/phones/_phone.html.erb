@@ -1,4 +1,4 @@
 <li class="list-group-item">
-    <%= phone.number.phony_formatted(format: :national, spaces: '') %> (<%= phone.phone_type.humanize %>) belonging to '<%= phone.phone_owner.humanize %>' 
+    <%= phone.number.phony_formatted(format: :national, spaces: '') %> (<%= phone.phone_owner.humanize + ' ' + phone.phone_type.humanize %>) 
     <%= link_to 'Delete', [phone.patient, phone], method: :delete, data: {confim: 'Are you sure?'}%>
 </li>

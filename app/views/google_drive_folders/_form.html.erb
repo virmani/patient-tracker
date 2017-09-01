@@ -1,3 +1,6 @@
+<button type="button" id="pick" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#gdriveModal">
+    Link Pictures
+</button>
 
 <% if defined?(gfolder) %>
     <% form_gfolder = gfolder %>
@@ -5,15 +8,15 @@
     <% form_gfolder = @patient.build_google_drive_folder %>
 <% end %>
 
-<p>Select a new folder
-    <%= button_tag "Pick Folder", type:"button", id: "pick" %>
-</p>
-
-<%= form_for([@patient, form_gfolder]) do |f| %>
-    <%= f.text_field :google_id, disabled: true, id: 'gid_view' %>
+<%= form_for([@patient, form_gfolder], html: {id: 'link_form'}) do |f| %>
     <%= f.hidden_field :google_id, id: 'gid' %>
-    <%= f.submit 'Link', disabled: true, id: 'gform_submit' %> 
-<% end %>
+<% end %>                
+
+
+
+
+
+
 
 <script src="filepicker.js"></script>
 <script>
@@ -26,9 +29,10 @@
             onSelect: function(file) {
                 console.log(file);
                 document.getElementById("gid").value = file.id;
-                document.getElementById("gid_view").value = file.id;
-                document.getElementById("gform_submit").disabled = false;
+                //document.getElementById("gid_view").value = file.id;
+                //document.getElementById("gform_submit").disabled = false;
                 //alert('Selected ' + file.title);
+                document.getElementById("link_form").submit();
             }
         });	
     }
