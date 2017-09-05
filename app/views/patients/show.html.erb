@@ -68,6 +68,14 @@
     <% else %>
         <%= render 'google_drive_folders/form' %>
     <% end %>
-
 <% end %>
-
+    
+<h2>Notes</h2>
+<%= render 'notes/form' %>
+<% @patient.notes.select do |note| %>
+    <% if note.id != nil %>
+        <h4><%= note.created_at %></h4>
+        <p><%= note.note %></p>
+        <%= link_to "Edit", edit_patient_note_path(:patient_id => @patient.id, :id => note.id) %>
+    <% end %>
+<% end %>
