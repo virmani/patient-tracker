@@ -7,7 +7,7 @@
       <th>Name</th>
       <th>Date of Birth</th>
       <th>District</th>
-      <th>Action</th>
+      <th>Created At</th>
     </tr>
   </thead>
 
@@ -18,7 +18,7 @@
         <td><%= "#{patient.given_name} #{patient.last_name}" %></td>
         <td><%= patient.date_of_birth %></td>
         <td><%= patient.permanent_district %></td>
-        <td><%= link_to 'Edit', patient_path(patient) %></td>
+        <td><%= patient.created_at.in_time_zone("New Delhi").to_date %></td>
       </tr>
     <% end %> 
   </tbody>
