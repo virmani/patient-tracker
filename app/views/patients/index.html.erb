@@ -1,19 +1,36 @@
-<h1>Listing patients</h1>
+<div class="h1">All Patients</div>
 
-<%= link_to 'New Patient', new_patient_path %>
- 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>City/District</th>
-  </tr>
- 
-  <% @patients.each do |patient| %>
+<table id="patients-table" class="table table-responsive table-hover">
+  <thead class="thead-default">
     <tr>
-      <td><%= "#{patient.given_name} #{patient.last_name}" %></td>
-      <td><%= patient.permanent_district %></td>
-      <td><%= link_to 'Show', patient_path(patient) %></td>
-      <td><%= link_to 'Edit', edit_patient_path(patient) %></td>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Date of Birth</th>
+      <th>District</th>
+      <th>Action</th>
     </tr>
-  <% end %>
+  </thead>
+
+  <tbody>
+    <% @patients.each do |patient| %>
+      <tr data-url='<%= patient_path(patient) %>'>
+        <td scope="row"><%= patient.id %></td>
+        <td><%= "#{patient.given_name} #{patient.last_name}" %></td>
+        <td><%= patient.date_of_birth %></td>
+        <td><%= patient.permanent_district %></td>
+        <td><%= link_to 'Edit', patient_path(patient) %></td>
+      </tr>
+    <% end %> 
+  </tbody>
 </table>
+
+<script>
+      $(document).ready(function() {
+          console.log( "ready!" );
+          $('#patients-table').bootstrapTable({
+            onClickRow: function (row, $element) {
+              window.location = $element.data('url');
+            }
+        });
+      });
+</script>

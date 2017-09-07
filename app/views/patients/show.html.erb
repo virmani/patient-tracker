@@ -59,6 +59,7 @@
 
 <div class="row my-3">
     <div class="col-md-4">
+        <span class="h3">Communication Details</span>
         <div class=my-3>
             <span class="h4">Phone Numbers</span>
             <button type="button" class="btn btn-primary btn-sm ml-3" data-toggle="modal" data-target="#addPhoneModal">
@@ -71,7 +72,7 @@
                 <%= render 'phones/form' %>
             <% end %>
 
-            <ul class="list-group">
+            <ul class="list-group ">
                 <%= render @patient.phones.select { |ph| !ph.new_record? } %>
             </ul>
         </div>
@@ -93,6 +94,14 @@
         </div>
     </div>
     <div class="col-md-8">
+        <span class="h3">Patient Notes</span>
+        <button type="button" class="btn btn-primary btn-sm ml-3 mb-3" data-toggle="modal" data-target="#addNoteModal">
+            Add +
+        </button>
+        <%= render 'notes/form' %>
+        <ul class="list-group ">
+            <%= render @patient.notes.select { |em| !em.new_record? } %>
+        </ul>
     </div>
 </div>
 

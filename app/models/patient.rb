@@ -1,6 +1,7 @@
 class Patient < ApplicationRecord
     has_many :phones
     has_many :emails
+    has_many :notes
     has_one :google_drive_folder
 
     validates :last_name, presence: true, length: {minimum: 2}

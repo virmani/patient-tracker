@@ -1,0 +1,8 @@
+<li class="list-group-item list-group-item-secondary">
+    <div class="d-flex w-100 justify-content-between">
+        <div class="mb-1"><%= note.note %></div>
+         <small><%= note.created_at %> 
+         <%= link_to "Edit", edit_patient_note_path(:patient_id => @patient.id, :id => note.id) %></small>
+    </div>
+    <span class=my-1></span>
+</li>

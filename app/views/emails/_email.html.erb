@@ -1,4 +1,4 @@
-<li class="list-group-item">
+<li class="list-group-item no-border">
     <%= email.email_address %> (<%= email.email_owner.humanize %>) 
     <%= link_to 'Delete', [email.patient, email], method: :delete, data: {confim: 'Are you sure?'}%>
 </li>

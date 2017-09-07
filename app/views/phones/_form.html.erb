@@ -31,12 +31,16 @@
                         </script>
                     <% end %>
 
-                    <p>
-                        <%= f.label :number %> <%= f.text_field :number %>
-                        <%= f.label :phone_type %> <%= f.select :phone_type, Phone.phone_types.keys %>
-                        <%= f.label :phone_owner %> <%= f.select :phone_owner, Phone.phone_owners.keys %>
-                        <%= f.submit %> 
-                    </p>
+                    <div class="form-group">
+                        <%= f.label :number %> <%= f.text_field :number, class: "form-control", placeholder: "09999827987" %>
+                    </div>
+                    <div class="form-group">
+                        <%= f.label :phone_type %> <%= f.select :phone_type, Phone.phone_types.keys,{},  { :class => "form-control"} %>
+                    </div>
+                    <div class="form-group">
+                        <%= f.label :phone_owner %> <%= f.select :phone_owner, Phone.phone_owners.keys,{},  { :class => "form-control"} %>
+                    </div>
+                        <%= f.submit "Add Phone", class:"btn btn-primary" %> 
 
                 <% end %>
             </div>

@@ -1,0 +1,47 @@
+<% if defined?(@note) %>
+    <% form_note = @note %>
+<% else %>
+    <% form_note = @patient.notes.new %>
+<% end %>
+
+<div class="modal fade" id="addNoteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Add a new phone number</h4>
+            </div>
+            <div class="modal-body">
+                <%= form_for([@patient, form_note]) do |f| %>
+                    <% if form_note.errors.any? %>
+                        <div id="error_explanation">
+                        <h2>
+                            <%= pluralize(form_note.errors.count, "error") %> prohibited
+                            this patient from being saved:
+                        </h2>
+                        <ul>
+                            <% form_note.errors.full_messages.each do |msg| %>
+                            <li><%= msg %></li>
+                            <% end %>
+                        </ul>
+                        </div>
+                        <script>
+                            $('#addNoteModal').modal('show');
+                        </script>
+                    <% end %>
+
+                    <p>
+                    <div class="form-group">
+                        <%= f.label :note %> <%= f.text_area :note, class: "form-control form-control" %>
+                    </div>
+                        <%= f.submit "Add Note", class:"btn btn-primary" %> 
+                    </p>
+
+                <% end %>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
