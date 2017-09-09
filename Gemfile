@@ -32,6 +32,8 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'rb-readline'
+
 gem 'validates_timeliness', '~> 4.0'
 
 gem 'phony_rails'
