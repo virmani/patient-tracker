@@ -6,7 +6,7 @@ def phone_owner(str)
     Phone.phone_owners[str.downcase] ? Phone.phone_owners[str.downcase] : :other
 end
 
-patient_rows = CSV.read("/Users/virmani/temporary/patient-data.tsv", { :col_sep => "\t" });
+patient_rows = CSV.read("./patient-data.tsv", { :col_sep => "\t" });
 
 File.open('/tmp/patients-data', 'a') do |file|
 patient_rows.each do |pdata|
