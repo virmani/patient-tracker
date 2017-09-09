@@ -6,4 +6,6 @@ Rails.application.routes.draw do
     resources :notes
     resources :google_drive_folders
   end
+
+  root 'patients#index'
 end

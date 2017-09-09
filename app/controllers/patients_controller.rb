@@ -1,4 +1,7 @@
 class PatientsController < ApplicationController
+
+    http_basic_authenticate_with name: ENV["USER"], password: ENV["PASSWORD"]
+
     def index
         @patients = Patient.all
     end

@@ -17,8 +17,6 @@
 
 
 
-
-<script src="filepicker.js"></script>
 <script>
     <!-- TODO: apiKey is visible to the world. Build the token on server instead -->
     function initPicker() {
@@ -38,5 +36,5 @@
     }
 </script>
 
-<script src="https://www.google.com/jsapi?key=AIzaSyBib3PeMsbXEWBm_AjYmpESqk6-WlW2_xk"></script>
+<script src="<%= 'https://www.google.com/jsapi?key=' + ENV["GOOGLE_API_KEY"] %>"></script>
 <script src="https://apis.google.com/js/client.js?onload=initPicker"></script>
