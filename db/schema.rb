@@ -12,10 +12,13 @@
 
 ActiveRecord::Schema.define(version: 20170822163053) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "emails", force: :cascade do |t|
     t.string "email_address"
     t.integer "email_owner"
-    t.integer "patient_id"
+    t.bigint "patient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["patient_id"], name: "index_emails_on_patient_id"
@@ -23,7 +26,7 @@ ActiveRecord::Schema.define(version: 20170822163053) do
 
   create_table "google_drive_folders", force: :cascade do |t|
     t.string "google_id"
-    t.integer "patient_id"
+    t.bigint "patient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["patient_id"], name: "index_google_drive_folders_on_patient_id"
@@ -31,7 +34,7 @@ ActiveRecord::Schema.define(version: 20170822163053) do
 
   create_table "notes", force: :cascade do |t|
     t.text "note"
-    t.integer "patient_id"
+    t.bigint "patient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["patient_id"], name: "index_notes_on_patient_id"
@@ -57,10 +60,14 @@ ActiveRecord::Schema.define(version: 20170822163053) do
     t.string "number"
     t.integer "phone_type"
     t.integer "phone_owner"
-    t.integer "patient_id"
+    t.bigint "patient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["patient_id"], name: "index_phones_on_patient_id"
   end
 
+  add_foreign_key "emails", "patients"
+  add_foreign_key "google_drive_folders", "patients"
+  add_foreign_key "notes", "patients"
+  add_foreign_key "phones", "patients"
 end
