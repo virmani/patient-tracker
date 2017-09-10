@@ -78,7 +78,7 @@
                 Add +
             </button>
 
-            <% if defined?(@emails)%>
+            <% if defined?(@email)%>
                 <%= render 'emails/form', email: @email %>
             <% else %>
                 <%= render 'emails/form' %>
