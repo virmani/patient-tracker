@@ -1,4 +1,5 @@
 class Patient < ApplicationRecord
+    default_scope { order(updated_at: :desc) }
     has_many :phones
     has_many :emails
     has_many :notes
