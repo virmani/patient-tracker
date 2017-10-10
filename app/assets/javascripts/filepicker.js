@@ -53,12 +53,15 @@
             var docsView = new google.picker.DocsView()
                 .setIncludeFolders(true) 
                 .setMimeTypes('application/vnd.google-apps.folder')
-                .setSelectFolderEnabled(true);
+				.setSelectFolderEnabled(true);
+				
+			var origin = window.location.protocol + '//' + window.location.host;
 
 			this.picker = new google.picker.PickerBuilder().
 				addView(docsView).
 				setAppId(this.clientId).
 				setOAuthToken(accessToken).
+				setOrigin(origin).
 				setCallback(this._pickerCallback.bind(this)).
 				build().
 				setVisible(true);

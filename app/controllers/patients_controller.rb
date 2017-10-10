@@ -10,6 +10,13 @@ class PatientsController < ApplicationController
         @patient = Patient.find(params[:id])
     end
 
+    def districts
+        @dists = Patient.pluck(:permanent_district).uniq
+        respond_to do |format|
+            format.json { render json: @dists}
+        end
+    end
+
     def new
         @patient = Patient.new
     end
