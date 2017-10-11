@@ -13,7 +13,7 @@
 //= require rails-ujs
 //= require turbolinks
 //= require jquery/dist/jquery.min
-//= require popper.js/dist/popper.min
+//= require popper.js/dist/umd/popper.min
 //= require bootstrap-beta/dist/js/bootstrap.min
 //= require bootstrap-table/dist/bootstrap-table.min
 //= require typeahead.js/dist/typeahead.bundle.min

@@ -17,24 +17,5 @@
 
 
 
-<script>
-    <!-- TODO: apiKey is visible to the world. Build the token on server instead -->
-    function initPicker() {
-        var picker = new FilePicker({
-            apiKey: "<%= ENV["GOOGLE_API_KEY"] %>",
-            clientId:"<%= ENV["GOOGLE_CLIENT_ID"] %>",
-            buttonEl: document.getElementById('pick'),
-            onSelect: function(file) {
-                console.log(file);
-                document.getElementById("gid").value = file.id;
-                //document.getElementById("gid_view").value = file.id;
-                //document.getElementById("gform_submit").disabled = false;
-                //alert('Selected ' + file.title);
-                document.getElementById("link_form").submit();
-            }
-        });	
-    }
-</script>
-
 <script src="<%= 'https://www.google.com/jsapi?key=' + ENV["GOOGLE_API_KEY"] %>"></script>
 <script src="https://apis.google.com/js/client.js?onload=initPicker"></script>
