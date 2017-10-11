@@ -1,6 +1,9 @@
 {
   "name": "patient-tracker",
   "private": true,
+  "engines": {
+    "yarn": "^1.2.0"
+  },
   "dependencies": {
     "bootstrap-beta": "^4.0.0-beta",
     "bootstrap-table": "^1.11.2",
