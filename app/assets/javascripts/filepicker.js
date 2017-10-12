@@ -57,7 +57,8 @@
                 .setIncludeFolders(true) 
                 .setMimeTypes('application/vnd.google-apps.folder')
 				.setSelectFolderEnabled(true)
-				.setParent(parentFolder);
+				.setParent(parentFolder)
+				.setMode(google.picker.DocsViewMode.LIST);
 				
 			var origin = window.location.protocol + '//' + window.location.host;
 
