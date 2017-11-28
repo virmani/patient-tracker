@@ -45,3 +45,9 @@
         </div>
     </div>
 </div>
+
+<% if defined?(@note) %>
+    <script>
+        $('#addNoteModal').modal('show');
+    </script>
+<% end %>
