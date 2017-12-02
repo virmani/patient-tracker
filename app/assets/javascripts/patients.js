@@ -17,9 +17,11 @@ $(document).on('turbolinks:load', function() {
     var districts = new Bloodhound({
       datumTokenizer: Bloodhound.tokenizers.whitespace,
       queryTokenizer: Bloodhound.tokenizers.whitespace,
-      // `states` is an array of state names defined in "The Basics"
-      prefetch: '../typeahead/districts'
-    });
+      prefetch: {
+        url: '../typeahead/districts',
+        ttl: 60000
+    }
+  });
 
   $('#district-div .typeahead').typeahead({
         hint: true,

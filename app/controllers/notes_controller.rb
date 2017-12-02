@@ -30,10 +30,28 @@ class NotesController < ApplicationController
     end
   end
 
+  def diagnoses
+    @diagnoses = Note.pluck(:diagnosis).uniq
+    respond_to do |format|
+        format.json { render json: @diagnoses}
+    end
+  end
+
+  def surgeries
+    @surgeries = Note.pluck(:surgery).uniq
+    respond_to do |format|
+        format.json { render json: @surgeries}
+    end
+  end
+
   private
   
   def note_params
-    params.require(:note).permit(:note)
+    params.require(:note).permit(
+      :visit_date, 
+      :note,
+      :diagnosis,
+      :surgery)
   end
 
 end

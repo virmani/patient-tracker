@@ -32,6 +32,15 @@
 
                     <p>
                     <div class="form-group">
+                        <%= f.label :visit_date %> <%= f.date_field :visit_date, value: Date.today, class: "form-control" %>
+                        <%= f.label :diagnosis %>
+                        <div id="diagnosis-div">
+                            <%= f.text_field :diagnosis, class: "form-control typeahead" %>
+                        </div>                
+                        <%= f.label :surgery %>
+                        <div id="surgeries-div">
+                            <%= f.text_field :surgery, class: "form-control typeahead" %>
+                        </div>                
                         <%= f.label :note %> <%= f.text_area :note, class: "form-control" %>
                     </div>
                         <%= f.submit "Add Note", class:"btn btn-primary" %> 

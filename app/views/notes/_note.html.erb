@@ -1,8 +1,25 @@
 <li class="list-group-item list-group-item-secondary">
     <div class="d-flex w-100 justify-content-between">
-        <div class="mb-1"><%= note.note %></div>
-         <small><%= note.created_at %> 
-         <%= link_to "Edit", edit_patient_note_path(:patient_id => @patient.id, :id => note.id) %></small>
+        <div class="mb-1">
+            <% if note.diagnosis? %>
+                <div class="">Diagnosis: <%= note.diagnosis %></div>
+            <% end %>
+            <% if note.surgery? %>
+                <div class="">Surgery: <%= note.surgery %></div>
+            <% end %>
+            <% if note.note? %>
+                <div class="">Note: <%= note.note %></div>
+            <% end %>
+        </div>
+         <small>
+            <div>
+            <% if note.visit_date? %>
+                Visited: <%= note.visit_date %>
+            <% end %>
+            <%= link_to "Edit", edit_patient_note_path(:patient_id => @patient.id, :id => note.id) %>
+            </div>
+            <div>Created: <%= note.created_at.localtime.strftime('%Y-%m-%d %I:%M %p') %></div>
+         </small>
     </div>
     <span class=my-1></span>
 </li>

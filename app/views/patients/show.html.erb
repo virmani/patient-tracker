@@ -96,7 +96,7 @@
         </button>
         <%= render 'notes/form' %>
         <ul class="list-group ">
-            <%= render @patient.notes.select { |em| !em.new_record? } %>
+            <%= render @patient.notes.reorder('created_at DESC').select { |em| !em.new_record? } %>
         </ul>
     </div>
 </div>
