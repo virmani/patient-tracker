@@ -18,7 +18,7 @@
             <% end %>
             <%= link_to "Edit", edit_patient_note_path(:patient_id => @patient.id, :id => note.id) %>
             </div>
-            <div>Created: <%= note.created_at.localtime.strftime('%Y-%m-%d %I:%M %p') %></div>
+            <div>Created: <%= note.created_at.strftime('%Y-%m-%d %I:%M %p') %></div>
          </small>
     </div>
     <span class=my-1></span>
