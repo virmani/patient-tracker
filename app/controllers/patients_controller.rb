@@ -3,7 +3,7 @@ class PatientsController < ApplicationController
     http_basic_authenticate_with name: ENV["USER"], password: ENV["PASSWORD"]
 
     def index
-        @patients = Patient.all
+        @patients = Patient.all_in_updated_order
     end
 
     def show
