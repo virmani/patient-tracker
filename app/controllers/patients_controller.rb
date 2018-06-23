@@ -3,11 +3,18 @@ class PatientsController < ApplicationController
     http_basic_authenticate_with name: ENV["USER"], password: ENV["PASSWORD"]
 
     def index
-        @patients = Patient.all
+        @patients = Patient.all_in_updated_order
     end
 
     def show
         @patient = Patient.find(params[:id])
+    end
+
+    def districts
+        @dists = Patient.pluck(:permanent_district).uniq
+        respond_to do |format|
+            format.json { render json: @dists}
+        end
     end
 
     def new

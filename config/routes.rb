@@ -6,6 +6,12 @@ Rails.application.routes.draw do
     resources :notes
     resources :google_drive_folders
   end
+  
+  namespace 'typeahead' do
+    get "districts", to: '/patients#districts', :defaults => { :format => 'json' }
+    get "diagnoses", to: '/notes#diagnoses', :defaults => { :format => 'json' }
+    get "surgeries", to: '/notes#surgeries', :defaults => { :format => 'json' }
+  end
 
   root 'patients#index'
 end

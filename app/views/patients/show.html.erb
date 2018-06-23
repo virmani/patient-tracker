@@ -1,7 +1,7 @@
 <div class="row">
     <div class=col-md-10>
         <span class="display-3">
-            <%= "#{@patient.given_name} #{@patient.last_name}" %>
+            <%= "#{@patient.given_name} #{@patient.last_name}".titleize %>
             <small class="text-muted"><%= link_to 'Edit', edit_patient_path(@patient), class: "btn" %></small>
             
             <% if @patient.google_drive_folder.present? %>
@@ -19,6 +19,9 @@
 </div>
 <div class="row my-3">
     <div class="col-md-6">
+        <span class="font-weight-bold">Patient Id:</span>
+        <span><%= @patient.id %></span>
+        <br/>
         <span class="font-weight-bold">DOB:</span>
         <span><%= @patient.date_of_birth %></span>
         <br/>
@@ -96,7 +99,7 @@
         </button>
         <%= render 'notes/form' %>
         <ul class="list-group ">
-            <%= render @patient.notes.select { |em| !em.new_record? } %>
+            <%= render @patient.notes.reorder('created_at DESC').select { |em| !em.new_record? } %>
         </ul>
     </div>
 </div>

@@ -13,3 +13,8 @@ li.add-phone {
 li.no-border {
     border: none;
 }
+
+.picker.modal-dialog {
+    max-width: inherit;
+    pointer-events: all;
+}

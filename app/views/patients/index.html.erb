@@ -1,5 +1,5 @@
 
-<table id="patients-table" class="table table-responsive table-hover">
+<table id="patients-table" class="table table-hover">
   <thead class="thead-default">
     <tr>
       <th>Id</th>
@@ -14,7 +14,7 @@
     <% @patients.each do |patient| %>
       <tr data-url='<%= patient_path(patient) %>'>
         <td scope="row"><%= patient.id %></td>
-        <td><%= "#{patient.given_name} #{patient.last_name}" %></td>
+        <td><%= "#{patient.given_name} #{patient.last_name}".titleize %></td>
         <td><%= patient.date_of_birth %></td>
         <td><%= patient.permanent_district %></td>
         <td><button type="button" class="btn btn-primary">View</button></td>

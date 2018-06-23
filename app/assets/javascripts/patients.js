@@ -12,4 +12,24 @@ $(document).on('turbolinks:load', function() {
             $('#present_address').prop("disabled", false);
         }
     });
+
+    // constructs the suggestion engine
+    var districts = new Bloodhound({
+      datumTokenizer: Bloodhound.tokenizers.whitespace,
+      queryTokenizer: Bloodhound.tokenizers.whitespace,
+      prefetch: {
+        url: '../typeahead/districts',
+        ttl: 60000
+    }
+  });
+
+  $('#district-div .typeahead').typeahead({
+        hint: true,
+        highlight: true,
+        minLength: 1
+      },
+      {
+        name: 'districts',
+        source: districts
+      });    
 });

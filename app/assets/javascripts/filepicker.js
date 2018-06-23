@@ -3,6 +3,9 @@
  * By Daniel Lo Nigro (http://dan.cx/)
  */
 (function() {
+
+	var parentFolder = '0B8znplskfPN-THV1czlfcnM0Y3c';
+
 	/**
 	 * Initialise a Google Driver file picker
 	 */
@@ -53,13 +56,20 @@
             var docsView = new google.picker.DocsView()
                 .setIncludeFolders(true) 
                 .setMimeTypes('application/vnd.google-apps.folder')
-                .setSelectFolderEnabled(true);
+				.setSelectFolderEnabled(true)
+				.setParent(parentFolder)
+				.setMode(google.picker.DocsViewMode.LIST);
+				
+			var origin = window.location.protocol + '//' + window.location.host;
 
 			this.picker = new google.picker.PickerBuilder().
 				addView(docsView).
 				setAppId(this.clientId).
 				setOAuthToken(accessToken).
+				setOrigin(origin).
 				setCallback(this._pickerCallback.bind(this)).
+				enableFeature(google.picker.Feature.NAV_HIDDEN).
+				setTitle('Select the patient folder').
 				build().
 				setVisible(true);
 		},
