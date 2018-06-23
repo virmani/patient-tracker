@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### How to install on your computer
+Install ruby by following instructions on https://www.ruby-lang.org/en/documentation/installation/
+Install postgresql by following instructions on http://postgresguide.com/setup/install.html
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+git clone https://github.com/virmani/patient-tracker.git
+cd patient-tracker
+bundle install
+```
