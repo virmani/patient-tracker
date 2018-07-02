@@ -10,10 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171202044432) do
+ActiveRecord::Schema.define(version: 20180702104928) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "doctors", force: :cascade do |t|
+    t.text "name"
+  end
 
   create_table "emails", force: :cascade do |t|
     t.string "email_address"
@@ -57,6 +61,8 @@ ActiveRecord::Schema.define(version: 20171202044432) do
     t.text "present_address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "doctors_id"
+    t.index ["doctors_id"], name: "index_patients_on_doctors_id"
   end
 
   create_table "phones", force: :cascade do |t|
