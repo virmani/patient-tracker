@@ -44,6 +44,13 @@ class NotesController < ApplicationController
     end
   end
 
+  def search
+    @entry = Note.pluck(:patient_id, :diagnosis)
+    respond_to do |format|
+      format.json { render json: @entry }
+    end
+  end
+
   private
   
   def note_params

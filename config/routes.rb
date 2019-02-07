@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     get "districts", to: '/patients#districts', :defaults => { :format => 'json' }
     get "diagnoses", to: '/notes#diagnoses', :defaults => { :format => 'json' }
     get "surgeries", to: '/notes#surgeries', :defaults => { :format => 'json' }
+    get "search", to: '/notes#search', :defaults => { :format => 'json' }
+
   end
 
   root 'patients#index'

@@ -24,7 +24,8 @@ test:
   <<: *default
   database: patients_test
   username: virmani
-  password:
+  password: <%= ENV["PG_PASSWORD"] %>
+  host: 127.0.0.1
 
 production:
   <<: *default
