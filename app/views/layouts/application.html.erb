@@ -9,14 +9,13 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= yield :search_script %>
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   </head>
 
   <body>
-
-
     <nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-primary">
       <a class="navbar-brand" href="/">Tracker</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,6 +30,7 @@
           <li class="nav-item active">
             <a class="nav-link" href="<%= new_patient_path %>">New Patient</a>
           </li>
+          <%= yield :search %>
         </ul>
       </div>
     </nav>
@@ -39,6 +39,5 @@
       <div class='my-3'> </div>
       <%= yield %>
     </div>
-
   </body>
 </html>
