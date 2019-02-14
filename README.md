@@ -1,24 +1,42 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### How to install on your computer
+Install ruby by following instructions on https://www.ruby-lang.org/en/documentation/installation/
+Install postgresql by following instructions on http://postgresguide.com/setup/install.html
+Also Install the package postgresql-server-dev-all
 
-Things you may want to cover:
+```
+git clone https://github.com/virmani/patient-tracker.git
+cd patient-tracker
+bundle install
+```
 
-* Ruby version
+Install Yarn to setup the js packages https://yarnpkg.com/en/docs/install
 
-* System dependencies
+```
+yarn install
+```
 
-* Configuration
+Switch to the postgres user and create a role:
 
-* Database creation
+```
+sudo -u postgres createuser -P <username>
+```
+After which grant the user permission to createdb
 
-* Database initialization
+```
+sudo -u postgres psql -c "ALTER USER <username> WITH CREATEDB"
+```
 
-* How to run the test suite
+Create a file called local_env.yml in config directory and export PG_PASSWORD, USER and PASSWORD ENV variables from it by
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+PG_PASSWORD:<your_postgres_password>
+USER:<username for basic http auth>
+PASSWORD:<password for basic http auth>
+```
 
-* Deployment instructions
-
-* ...
+Create a database:
+```
+createdb -O <username> <dbname>
+```

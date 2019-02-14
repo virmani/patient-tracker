@@ -8,6 +8,11 @@ class PatientsController < ApplicationController
 
     def show
         @patient = Patient.find(params[:id])
+        if @patient['doctors_id'].nil?
+            @doctor = nil
+        else
+          @doctor=Doctor.find(@patient['doctors_id'])
+        end
     end
 
     def districts
@@ -26,8 +31,14 @@ class PatientsController < ApplicationController
     end
 
     def create
+        doctor = Doctor.find_by(name: params[:patient]["doctors_name"])
+        if(doctor.nil?)
+            doctor = Doctor.new
+            doctor.name=params[:patient]["doctors_name"]
+            doctor.save
+        end
         @patient = Patient.new(patient_params)
-
+        @patient.doctors_id = doctor['id']
         if @patient.save
             redirect_to @patient
         else
@@ -48,8 +59,8 @@ class PatientsController < ApplicationController
     private
         def patient_params
             params.require(:patient)
-                .permit(:last_name, 
-                :given_name, 
+                .permit(:last_name,
+                :given_name,
                 :date_of_birth,
                 :fathers_name,
                 :fathers_occupation,
