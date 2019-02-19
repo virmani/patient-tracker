@@ -18,3 +18,4 @@
 //= require bootstrap-table/dist/bootstrap-table.min
 //= require typeahead.js/dist/typeahead.bundle.min
 //= require_tree .
+//= stub index

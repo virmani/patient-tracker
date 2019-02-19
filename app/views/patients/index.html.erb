@@ -1,4 +1,20 @@
+<% content_for :search_script do %>
+  <%= javascript_include_tag "index", 'data-turbolinks-track': 'reload' %>
+<% end %>
 
+<% content_for :search do %>
+  <li class="nav-item active">
+    <div class="input-group">
+      <select class="custom-select" id="patient-search-select">
+        <option value="1">Name</option>
+        <option value="3">District</option>
+        <option value="2">Diagnosis</option>
+
+      </select>
+      <input type="text" id="patient-search" class="form-control">
+    </div>
+  </li>
+<% end %>
 <table id="patients-table" class="table table-hover">
   <thead class="thead-default">
     <tr>

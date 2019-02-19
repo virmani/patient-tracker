@@ -14,7 +14,8 @@ development:
   <<: *default
   database: patients_dev
   username: virmani
-  password:
+  password: <%= ENV["PG_PASSWORD"] %>
+  host: 127.0.0.1
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -23,7 +24,8 @@ test:
   <<: *default
   database: patients_test
   username: virmani
-  password:
+  password: <%= ENV["PG_PASSWORD"] %>
+  host: 127.0.0.1
 
 production:
   <<: *default
