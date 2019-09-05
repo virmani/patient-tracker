@@ -28,7 +28,7 @@ class Patient < ApplicationRecord
     def self.all_in_updated_order
         Patient.left_outer_joins(:phones, :emails, :google_drive_folder, :notes)
             .select('patients.id, patients.given_name, patients.last_name, '\
-                'COALESCE(MAX(notes.visit_date), patients.updated_at) as last_contact, '\
+                'COALESCE(MAX(notes.visit_date), patients.created_at) as last_contact, '\
                 'patients.permanent_district, '\
                 'MAX('\
                     'GREATEST(patients.updated_at, emails.updated_at, google_drive_folders.updated_at, phones.updated_at, notes.updated_at)'\
