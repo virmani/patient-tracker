@@ -20,7 +20,7 @@
     <tr>
       <th>Id</th>
       <th>Name</th>
-      <th>Date of Birth</th>
+      <th>Visited/Created</th>
       <th>District</th>
       <th>Actions</th>
     </tr>
@@ -31,7 +31,7 @@
       <tr data-url='<%= patient_path(patient) %>'>
         <td scope="row"><%= patient.id %></td>
         <td><%= "#{patient.given_name} #{patient.last_name}".titleize %></td>
-        <td><%= patient.date_of_birth %></td>
+        <td><%= patient.last_contact.to_date %></td>
         <td><%= patient.permanent_district %></td>
         <td><button type="button" class="btn btn-primary">View</button></td>
       </tr>
