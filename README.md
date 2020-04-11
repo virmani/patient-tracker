@@ -17,26 +17,32 @@ Install Yarn to setup the js packages https://yarnpkg.com/en/docs/install
 yarn install
 ```
 
-Switch to the postgres user and create a role:
+Create the postgres user and database
 
 ```
-sudo -u postgres createuser -P <username>
-```
-After which grant the user permission to createdb
-
-```
-sudo -u postgres psql -c "ALTER USER <username> WITH CREATEDB"
+psql postgres
+CREATE USER <database_name> WITH CREATEDB PASSWORD '<your_postgres_password>';
+CREATE DATABASE <database_user> OWNER patients_dev;
 ```
 
 Create a file called local_env.yml in config directory and export PG_PASSWORD, USER and PASSWORD ENV variables from it by
 
 ```
-PG_PASSWORD:<your_postgres_password>
-USER:<username for basic http auth>
-PASSWORD:<password for basic http auth>
+PG_DATABASE: <database_name>
+PG_USER: <database_user>
+PG_PASSWORD: <your_postgres_password>
+USER: <username for basic http auth>
+PASSWORD: <password for basic http auth>
 ```
 
-Create a database:
+Running database migrations
 ```
-createdb -O <username> <dbname>
+bundle exec rails db:migrate
 ```
+
+Starting the server
+```
+bundle exec rails s
+```
+
+TODO: Setting up Google drive integration
