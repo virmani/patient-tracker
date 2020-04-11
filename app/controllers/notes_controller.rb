@@ -45,7 +45,7 @@ class NotesController < ApplicationController
   end
 
   def search
-    @entry = Note.pluck(:patient_id, :diagnosis)
+    @entry = Note.pluck(:patient_id, :diagnosis).reject { |item| (item == nil || item.length != 2 || item[1] == nil || item[1].empty?) }
     respond_to do |format|
       format.json { render json: @entry }
     end
