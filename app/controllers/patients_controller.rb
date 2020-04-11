@@ -11,7 +11,7 @@ class PatientsController < ApplicationController
     end
 
     def districts
-        @dists = Patient.pluck(:permanent_district).uniq
+        @dists = Patient.pluck(:permanent_district).uniq.reject { |item| (item == nil || item.empty?) }
         respond_to do |format|
             format.json { render json: @dists}
         end

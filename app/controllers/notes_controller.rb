@@ -38,7 +38,7 @@ class NotesController < ApplicationController
   end
 
   def surgeries
-    @surgeries = Note.pluck(:surgery).uniq
+    @surgeries = Note.pluck(:surgery).uniq.reject { |item| (item == nil || item.empty?) }
     respond_to do |format|
         format.json { render json: @surgeries}
     end
