@@ -9,6 +9,9 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2.2'
 
+# trying to get the asset compilation
+gem 'sprockets-rails', '2.3.3'
+
 gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 4.3.3'
@@ -64,9 +67,6 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.1'
-
-  # trying to get the asset compilation happen
-  gem 'sprockets-rails', '2.3.3'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
