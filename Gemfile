@@ -8,6 +8,9 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2.2'
+
+gem 'sprockets-rails', '2.3.3'
+
 gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 4.3.3'
