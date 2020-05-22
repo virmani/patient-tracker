@@ -112,7 +112,7 @@ GEM
       activesupport (>= 3.0)
       phony (> 2.15)
     public_suffix (4.0.4)
-    puma (4.3.3)
+    puma (4.3.5)
       nio4r (~> 2.0)
     rack (2.2.2)
     rack-test (1.1.0)
@@ -213,7 +213,7 @@ DEPENDENCIES
   listen (~> 3.2.1)
   pg
   phony_rails
-  puma (~> 4.3.3)
+  puma (~> 4.3.5)
   rails (~> 6.0.2.2)
   rb-readline
   sass-rails (~> 6.0.0)
