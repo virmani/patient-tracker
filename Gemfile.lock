@@ -103,7 +103,7 @@ GEM
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.14.0)
-    nio4r (2.5.2)
+    nio4r (2.5.8)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
     pg (1.2.3)
@@ -112,7 +112,7 @@ GEM
       activesupport (>= 3.0)
       phony (> 2.15)
     public_suffix (4.0.4)
-    puma (4.3.3)
+    puma (4.3.9)
       nio4r (~> 2.0)
     rack (2.2.2)
     rack-test (1.1.0)
@@ -213,7 +213,7 @@ DEPENDENCIES
   listen (~> 3.2.1)
   pg
   phony_rails
-  puma (~> 4.3.3)
+  puma (~> 4.3.9)
   rails (~> 6.0.2.2)
   rb-readline
   sass-rails (~> 6.0.0)
